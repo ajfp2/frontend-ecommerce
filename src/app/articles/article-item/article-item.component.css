@@ -1,0 +1,78 @@
+/* CSS DE: https://www.w3schools.com/ */
+.card-item {    
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-item h1{
+    font-weight: 700;
+    line-height: 100%;
+    font-size: 1.75rem;
+}
+
+.card-item img{
+    max-height: 400px;
+}
+
+.sale{
+    box-shadow: 0 4px 8px 0 rgba(5, 235, 39, 0.2);
+}
+
+.notSale{
+    box-shadow: 0 4px 8px 0 rgba(235, 12, 12, 0.2);
+    border: 1px solid red;
+}
+
+.info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+.price_disabled {
+    color: grey;
+    font-size: 20px;
+    text-decoration:line-through;
+}
+  
+.price {
+    /* color: rgb(38, 56, 254);; */
+    font-size: 26px;
+}
+  
+.quantity-item {
+    text-align: right;
+    border: 1px solid black;
+    background-color: rgba(15, 12, 12, 0.837);
+    border-radius: 20px;
+    color: white;
+    padding: 5px;
+}
+
+/* https://www.w3schools.com/ */
+.card-item button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+  
+/* https://www.w3schools.com/ */
+.card-item button:hover {
+    opacity: 0.6;
+}
+
+.btn-succes{
+    background-color: rgb(19, 209, 19);
+}
+.btn-danger{
+    background-color: rgb(226, 46, 43);
+}
