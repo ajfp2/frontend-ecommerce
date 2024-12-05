@@ -1,15 +1,17 @@
 
 <div class="card-item" >
-    <img [src]="article.imageUrl" alt="Foto article item" style="width:100%" [class]="article.isOnSaleChange() ? 'sale' : 'notSale'">
+    <img [src]="article.imageUrl" alt="Foto article item" style="width:100%" [class] = "" [class]="article.isOnSale ? 'sale' : 'notSale'">    
     <h1>{{ article.name }}</h1>
+
     <p class="price" [ngClass]="stockClasses">{{ article.price }} €</p>
-    
-    <div id="enVenta" *ngIf="article.isOnSaleChange()">
+    <small>uid: {{ article.uid }}</small>
+    <div id="enVenta" *ngIf="article.isOnSale">
         <div class="info">
             <h4>Cart Quantity: </h4>
             <p class="quantity-item">{{ article.quantityInCart }}</p>
         </div>    
-        <p><button class="btn-succes" (click)="addToCart($event);">Add Cart</button></p>
-        <p><button class="btn-danger" (click)="removeToCart($event);" [disabled]="article.quantityInCart <= 0">Remove Cart</button></p>
+        <button class="btn-success" (click)="addToCart();">+ Añadir</button>
+        <button class="btn-danger" (click)="removeToCart();" [disabled]="article.quantityInCart <= 0">- Borrar</button>
+        <button class="btn-primary" (click)="changeArticlePrice()">Cambiar precio</button>
     </div>
 </div>

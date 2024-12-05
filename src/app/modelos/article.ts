@@ -1,14 +1,17 @@
 export class Article {
 
-    isOnSale: boolean = false;
+//ng g interface mi-interface
 
-    constructor(public name: string,
-                public imageUrl: string,
-                public price: number,                
-                public quantityInCart: number
-            ) {}
+
+    constructor(
+        public uid: number,
+        public name: string,
+        public imageUrl: string,
+        public price: number, 
+        public isOnSale: boolean,               
+        public quantityInCart: number        
+    ) {}
+
+    
   
-    isOnSaleChange(): boolean {
-        return this.isOnSale;
-    }
   }
