@@ -1,8 +1,7 @@
+// SE pueden usar cualquiera de las dos formas, si tuvieramos que obtener los datos desde una BD es mejor usar una interfaz pero de momento da igual.
+// He optado por utilizar una clase.
+
 export class Article {
-
-//ng g interface mi-interface
-
-
     constructor(
         public uid: number,
         public name: string,
@@ -11,7 +10,16 @@ export class Article {
         public isOnSale: boolean,               
         public quantityInCart: number        
     ) {}
+}
 
+
+
+export interface ArticleI {
+    uid: number;
+    name: string;
+    imageUrl: string;
+    price: number;
+    isOnSale: boolean;
+    quantityInCart: number;
+}
     
-  
-  }

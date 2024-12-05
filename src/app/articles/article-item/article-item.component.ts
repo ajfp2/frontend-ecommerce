@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
-import { Article } from '../../modelos/article';
+import { Article, ArticleI } from '../../modelos/article';
 import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
 
 @Component({
@@ -14,13 +14,24 @@ export class ArticleItemComponent implements OnInit{
     
     @Input() public article: Article;
     @Output() private quantityChange: EventEmitter<ArticleQuantityChange> = new EventEmitter();
-
+    // public articleI: ArticleI;
     public stockClasses;
 
     constructor(){}
 
     ngOnInit(): void {
-        // this.article = new Article('Bosque Matasnos','images/articles/bosque-matasnos.png', 35.5, true, 3);
+
+      // Si usarmos interfaz inicializariamos el article de la siguiente manera:
+      /*
+        this.articleI = {
+          uid: 1,
+          name: 'Bosque Matasnos',
+          imageUrl: 'images/articles/bosque-matasnos.png',
+          price: 35.5, 
+          isOnSale: true, 
+          quantityInCart: 3
+        };
+        */
         this.stockClasses = {
             "price": this.article.isOnSale,
             "price_disabled": !this.article.isOnSale,
