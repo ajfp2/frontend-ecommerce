@@ -1,9 +1,11 @@
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<!--
 <div class="card-item" >
-    <img [src]="article.imageUrl" alt="Foto article item" style="width:100%" [class] = "" [class]="article.isOnSale ? 'sale' : 'notSale'">    
+    <img [src]="article.imageUrl" alt="Foto article item" style="width:100%" [class]="article.isOnSale ? 'sale' : 'notSale'">    
     <h1>{{ article.name }}</h1>
 
-    <p class="price" [ngClass]="stockClasses">{{ article.price }} €</p>
+    <p class="price" [ngClass]="stockClasses">{{ article.price }}€</p>
     <small>uid: {{ article.uid }}</small>
     <div id="enVenta" *ngIf="article.isOnSale">
         <div class="info">
@@ -13,5 +15,24 @@
         <button class="btn-success" (click)="addToCart();">+ Añadir</button>
         <button class="btn-danger" (click)="removeToCart();" [disabled]="article.quantityInCart <= 0">- Borrar</button>
         <button class="btn-primary" (click)="changeArticlePrice()">Cambiar precio</button>
+    </div>
+</div>
+-->
+<div class="card" style="max-width: 320px">
+    <img [src]="article.imageUrl" style="max-height: 420px" class="card-img-top" alt="Product Image" [class]="article.isOnSale ? 'sale' : 'notSale'">
+    <div class="card-body">
+        <h5 class="card-title">{{ article.name }}</h5>
+        <p class="card-text">Short product description goes here.</p>
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="h5 mb-0" [ngClass]="stockClasses">{{ article.price }}€</span>
+            <div class="quantity-item">
+                <small>STOCK:</small> {{ article.quantityInCart }}
+            </div>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between bg-light" *ngIf="article.isOnSale">
+        <button class="btn btn-primary btn-sm" (click)="addToCart();">+ Añadir</button>
+        <!-- <button class="btn btn-primary" (click)="changeArticlePrice()">Cambiar</button> -->
+        <button class="btn btn-danger btn-sm" (click)="removeToCart();" [disabled]="article.quantityInCart <= 0">- Borrar</button>
     </div>
 </div>

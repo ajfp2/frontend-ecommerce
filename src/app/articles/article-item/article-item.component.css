@@ -47,10 +47,11 @@
 }
   
 .quantity-item {
+    font-size: 12px;
     text-align: right;
-    border: 1px solid black;
-    background-color: rgba(15, 12, 12, 0.837);
-    border-radius: 20px;
+    /* border: 1px solid black; */
+    background-color: rgba(58, 56, 56, 0.837);
+    border-radius: 15px;
     color: white;
     padding: 5px;
 }

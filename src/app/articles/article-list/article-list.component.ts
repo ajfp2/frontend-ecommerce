@@ -7,23 +7,11 @@ import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
   standalone: false,
   
   template: `
-  <div class="list-article">
-    <app-article-item *ngFor="let item of articles" [article]="item" (quantityChange)="onChangeQuantity($event);"></app-article-item>
+  <div class="row">
+    <app-article-item class="col-auto" *ngFor="let item of articles" [article]="item" (quantityChange)="onChangeQuantity($event);"></app-article-item>
     </div>
   `,
-  styles: [`
-    .list-article {
-
-    display: grid;
-    margin-inline: 0 auto;
-    /* max-width: 1200px;
-        width: 100%;
-    min-height: 100%;*/
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
-    }
-  `]
+  styles: []
 })
 export class ArticleListComponent implements OnInit{
 
