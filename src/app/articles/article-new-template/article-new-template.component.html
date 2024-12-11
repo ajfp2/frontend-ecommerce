@@ -1,0 +1,30 @@
+<h2>Nuevo Artículo Template</h2>
+
+<div class="form-group">
+    <form (ngSubmit)="createArticle(articleForm)" #articleForm="ngForm">
+        <div class="article-code">
+            <input type="number" min='1' step='1' placeholder="Código Artículo" name="uid" ngModel required>
+        </div>
+
+        <div class="article-name">
+            <input type="text" placeholder="Nombre" name="name" ngModel required>
+        </div>
+
+        <div class="article-code">
+            <input type="number" placeholder="PVP Artículo" name="price" ngModel required>
+        </div>
+
+        <div class="article-image">
+            <input type="text" placeholder="Image URL" name="imageUrl" ngModel required>
+        </div>
+    
+        <div class="article-sale">
+            <input type="checkbox" name="isOnSale" >
+            Artículo en venta
+        </div>
+
+        <button [disabled]="!articleForm.valid" type="submit">Create</button>
+    </form>
+</div>
+
+<h4>Stock Name is {{article | json}}</h4>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
-import { Article, ArticleI } from '../../modelos/article';
+import { Article } from '../../modelos/article';
 import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
 
 @Component({

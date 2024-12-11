@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ecommerce';
+    title = 'ecommerce';
+
+    url = "inicio";
+    onChangeMenu(ev){
+        console.log("Menú:", ev);
+        this.url = ev;        
+    }
 }

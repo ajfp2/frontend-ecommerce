@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="#" (click)='menuClick($event, "inicio");' >
             <img src="images/logos/logo-light-icon.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
             ECOMMERCE
         </a>
@@ -14,13 +14,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Artículos</a>
+                    <a class="nav-link active" aria-current="page" href="#" (click)="menuClick($event, 'inicio');">Artículos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nuevo Artículo Template</a>
+                    <a class="nav-link" href="#" (click)="menuClick($event, 'template');">Nuevo Artículo Template</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nuevo Artículo Reactivo</a>
+                    <a class="nav-link" href="#" (click)="menuClick($event, 'reactivo');">Nuevo Artículo Reactivo</a>
                 </li>                
             </ul>
         </div>

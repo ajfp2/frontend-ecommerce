@@ -13,7 +13,7 @@ export class Article {
 }
 
 
-
+/*
 export interface ArticleI {
     uid: number;
     name: string;
@@ -22,4 +22,4 @@ export interface ArticleI {
     isOnSale: boolean;
     quantityInCart: number;
 }
-    
+    */
