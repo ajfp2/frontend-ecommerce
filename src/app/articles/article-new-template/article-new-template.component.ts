@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Article } from '../../modelos/article';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-article-new-template',
@@ -10,18 +11,18 @@ import { Article } from '../../modelos/article';
 })
 
 export class ArticleNewTemplateComponent {
-    public article: Article;
+    public articleForm: FormGroup;
     public confirmed = false;
 
     constructor(){
-        this.article = new Article(4, 'Superius', 'images/articles/4.png', 47.70, true, 4);
+        //this.article = new Article(4, 'Superius', 'images/articles/4.png', 47.70, true, 4);
+        
     }
 
     createArticle(articleForm){
-      console.log("Artículo creado", this.article);
       console.log('Artículo form', articleForm.value);
       if (articleForm.valid) {
-        console.log('Creando  artículo ', this.article);
+        console.log('Creando  artículo ', articleForm.value.name);
       } else {
         console.error('Formulario artículo estado malo');
       }      

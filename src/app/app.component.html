@@ -4,10 +4,10 @@
 <div class="container-fluid">
     <app-navbar (url)="onChangeMenu($event);"></app-navbar>
 
-    <h1 class="mx-auto text-center p-3">Ecommerce1 PEC-5</h1>
+    <h1 class="mx-auto text-center p-3">Ecommerce PEC-5</h1>
 
-        <app-article-list *ngIf="url === 'inicio'"></app-article-list>
-        <app-article-new-template *ngIf="url ==='template'"></app-article-new-template>
+    <app-article-list *ngIf="url === 'inicio'"></app-article-list>
+    <app-article-new-template *ngIf="url ==='template'"></app-article-new-template>
 
     <router-outlet />
 </div>

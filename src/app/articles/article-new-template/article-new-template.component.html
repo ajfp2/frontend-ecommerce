@@ -1,30 +1,44 @@
-<h2>Nuevo Artículo Template</h2>
 
-<div class="form-group">
-    <form (ngSubmit)="createArticle(articleForm)" #articleForm="ngForm">
-        <div class="article-code">
-            <input type="number" min='1' step='1' placeholder="Código Artículo" name="uid" ngModel required>
-        </div>
 
-        <div class="article-name">
-            <input type="text" placeholder="Nombre" name="name" ngModel required>
-        </div>
+<div class="row">
+    <div class="col-lg-6 form-group offset-3">
+        <h2>Nuevo Artículo Template</h2><hr>
+        <form (ngSubmit)="createArticle(articleForm)" #articleForm="ngForm">
 
-        <div class="article-code">
-            <input type="number" placeholder="PVP Artículo" name="price" ngModel required>
-        </div>
+            <div class="article-code mb-3">
+                <label for="uid" class="form-label">Código Artículo:</label>
+                <input type="number" aria-describedby="uidHelp" class="form-control form-control-sm" min='1' step='1' placeholder="Código Artículo" id="uid" name="uid" ngModel required>
+                <div id="uidHelp" class="form-text">El código es requerido</div>
+            </div>
 
-        <div class="article-image">
-            <input type="text" placeholder="Image URL" name="imageUrl" ngModel required>
-        </div>
-    
-        <div class="article-sale">
-            <input type="checkbox" name="isOnSale" >
-            Artículo en venta
-        </div>
+            <div class="article-name mb-3">
+                <label for="name" class="form-label">Nombre Artículo:</label>
+                <input type="text" aria-describedby="nameHelp" class="form-control form-control-sm" placeholder="Nombre Artículo" id="name" name="name" ngModel required>
+                <div id="nameHelp" class="form-text">El nombre es obligatorio.</div>
+            </div>
 
-        <button [disabled]="!articleForm.valid" type="submit">Create</button>
-    </form>
+            <div class="article-code mb-3">
+                <label for="price" class="form-label">PVP Artículo:</label>
+                <input type="number" aria-describedby="pvpHelp" class="form-control form-control-sm" placeholder="PVP Artículo" id="price" name="price" ngModel required>
+                <div id="pvpHelp" class="form-text">El precio es obligatorio.</div>
+            </div>
+
+            <div class="article-image mb-3">
+                <label for="imageUrl" class="form-label">Imagen Artículo:</label>
+                <input type="text" aria-describedby="imageHelp" class="form-control form-control-sm" placeholder="Imagen Artículo" id="imageUrl" name="imageUrl" ngModel required>
+                <div id="imageHelp" class="form-text">La imagen es obligatoria.</div>
+            </div>
+
+
+            <div class="mb-3 form-check article-sale">
+                <input type="checkbox" class="form-check-input" id="isOnSale" name="isOnSale">
+                <label class="form-check-label" for="isOnSale">Artículo en venta</label>
+            </div>
+            <button [disabled]="!articleForm.valid" type="submit" class="btn btn-success">GRABAR</button>
+            <!-- <h4>Form Article Name is {{articleForm | json}}</h4> -->
+            <!-- <h4>ARticle Name is {{article | json}}</h4> -->
+          </form>
+
+    </div>
 </div>
 
-<h4>Stock Name is {{article | json}}</h4>
