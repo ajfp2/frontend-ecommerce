@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
     title = 'ecommerce';
 
-    url = "template";
+    url = "reactivo";
     onChangeMenu(ev){
         console.log("Menú:", ev);
         this.url = ev;        

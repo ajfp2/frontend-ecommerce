@@ -1,0 +1,52 @@
+
+
+<div class="row">
+    <div class="col-lg-6 form-group offset-3">
+        <h2>Nuevo Artículo Reactivo</h2><hr>
+        <form (ngSubmit)="createArticle()" [formGroup]="articleForm">
+
+            <div class="article-code mb-3">
+                <label for="uid" class="form-label">Código Artículo:</label>
+                <input type="number" aria-describedby="uidHelp" class="form-control form-control-sm" min='1' step='1' placeholder="Código Artículo" id="uid" name="uid" formControlName="uid">
+                <div id="uidHelp" class="form-text">
+                    <span *ngIf="articleForm.get('uid').invalid && ( articleForm.get('uid').dirty || articleForm.get('uid').touched )">El código es obligatorio.</span>
+                    
+                </div>
+            </div>
+
+            <div class="article-name mb-3">
+                <label for="name" class="form-label">Nombre Artículo:</label>
+                <input type="text" aria-describedby="nameHelp" class="form-control form-control-sm" placeholder="Nombre Artículo" id="name" name="name" formControlName="name">
+                <div id="nameHelp" class="form-text" *ngIf="articleForm.get('name').invalid && ( articleForm.get('name').dirty || articleForm.get('name').touched )">El nombre es obligatorio.</div>
+            </div>
+
+            <div class="article-code mb-3">
+                <label for="price" class="form-label">PVP Artículo:</label>
+                <input type="number" aria-describedby="pvpHelp" class="form-control form-control-sm" placeholder="PVP Artículo" id="price" name="price" formControlName="price">
+                <div id="pvpHelp" class="form-text">
+                    <span *ngIf="articleForm.get('price').invalid && ( articleForm.get('price').dirty || articleForm.get('price').touched )">El precio es obligatorio.</span>
+                    <span *ngIf="articleForm.get('price').errors.min">El pvp mínimo debe ser de 0.1€</span>                    
+                </div>
+            </div>
+
+            <div class="article-image mb-3">
+                <label for="imageUrl" class="form-label">Imagen Artículo:</label>
+                <input type="text" aria-describedby="imageHelp" class="form-control form-control-sm" placeholder="Imagen Artículo" id="imageUrl" name="imageUrl" formControlName="imageUrl">
+                <div id="imageHelp" class="form-text">
+                    <span *ngIf="articleForm.get('imageUrl').invalid && ( articleForm.get('imageUrl').dirty || articleForm.get('imageUrl').touched )">La imagen es obligatoria.</span>
+                </div>
+            </div>
+
+
+            <div class="mb-3 form-check article-sale">
+                <input type="checkbox" class="form-check-input" id="isOnSale" name="isOnSale">
+                <label class="form-check-label" for="isOnSale">Artículo en venta</label>
+            </div>
+            <button [disabled]="!articleForm.valid" type="submit" class="btn btn-success">GRABAR</button>
+            <h4>Form Article {{ articleForm | json }}</h4>
+            <h4>STATUS FROM {{ articleForm | json }}</h4>
+          </form>
+
+    </div>
+</div>
+

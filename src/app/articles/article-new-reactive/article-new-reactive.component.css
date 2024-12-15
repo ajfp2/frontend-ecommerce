@@ -1,0 +1,13 @@
+.article-name .ng-valid,
+.article-code .ng-valid,
+.article-price .ng-valid,
+.article-image .ng-valid {
+  background-color: green;
+}
+
+.article-name .ng-invalid,
+.article-code .ng-invalid,
+.article-price .ng-invalid,
+.article-image .ng-invalid {
+  background-color: pink;
+}
