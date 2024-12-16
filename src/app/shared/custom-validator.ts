@@ -2,17 +2,22 @@ import { AbstractControl, ValidationErrors, ValidatorFn, Validators } from "@ang
 
 export class CustomValidator extends Validators {
 
-    static nameValidator(nombres: any): ValidatorFn{
-        
+    static nameValidator(): ValidatorFn{
+        const nombres = ["Prueba", "Test", "Mock", "Fake"];
         return (control: AbstractControl): ValidationErrors | null => {
-            const forbidden = nombres.find(control.value);
-            console.log("ESTA", forbidden);
-            
-            return forbidden ? {forbiddenName: {value: control.value}} : null;
+            const value = control.value;
+
+            if(!value){
+                return null;
+            }
+            const forbidden = nombres.find(n => n == value);
+        
+            return (forbidden != undefined) ? { nameValidator: true } : null;
         };
+        
     }
 
     static onlyNumbers(control: AbstractControl): ValidationErrors | null {
         return /^\d+$/.test(control.value) ? null : { onlyNumbers: true };
-      }
+    }
 }

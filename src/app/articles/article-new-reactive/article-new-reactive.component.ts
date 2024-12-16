@@ -19,10 +19,10 @@ export class ArticleNewReactiveComponent implements OnInit{
 
     ngOnInit(): void {
         const patronURL = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-        const nombres = ["Prueba", "Test", "Mock", "Fake"];
+        
         this.articleForm = this.formBuilder.group({
             uid: [null, [Validators.required, Validators.min(0)]],
-            name: [null, [Validators.required, CustomValidator.nameValidator(nombres)]],// this.nameValidator(nombres)
+            name: [null, [Validators.required, CustomValidator.nameValidator()]],
             price: [null, [Validators.required, Validators.min(0.1)]],
             imageUrl: [null, [Validators.required, Validators.pattern(patronURL)]]
         });
@@ -31,7 +31,7 @@ export class ArticleNewReactiveComponent implements OnInit{
     
 
     createArticle(){
-        console.log("CREANDO ARTÍCULO REACTIVO:", this.articleForm);
+        console.log("CREANDO ARTÍCULO REACTIVO:", this.articleForm.value);
     }
 
     resetForm(){
