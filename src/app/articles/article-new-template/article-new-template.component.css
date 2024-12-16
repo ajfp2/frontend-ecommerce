@@ -2,12 +2,18 @@
 .article-code .ng-valid,
 .article-price .ng-valid,
 .article-image .ng-valid {
-  background-color: green;
+  background-color: rgb(176, 249, 176);
+  border: 1px solid rgb(0, 194, 13);
 }
-
+/*
 .article-name .ng-invalid,
 .article-code .ng-invalid,
 .article-price .ng-invalid,
 .article-image .ng-invalid {
-  background-color: pink;
+  background-color: rgb(255, 189, 189);
+  border: 1px solid rgb(255, 0, 0);
+}
+*/
+.form-text {
+  color: rgb(246, 72, 72);
 }
