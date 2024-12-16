@@ -7,6 +7,7 @@ import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
   standalone: false,
   
   template: `
+  <h1 class="mx-auto text-center pb-2">Ecommerce PEC-5</h1>
   <div class="row">
     <app-article-item class="col-auto" *ngFor="let item of articles" [article]="item" (quantityChange)="onChangeQuantity($event);"></app-article-item>
     </div>

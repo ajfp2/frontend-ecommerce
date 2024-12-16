@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidator } from '../../shared/custom-validator';
 
 @Component({
   selector: 'app-article-new-reactive',
@@ -8,20 +9,33 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   templateUrl: './article-new-reactive.component.html',
   styleUrl: './article-new-reactive.component.css'
 })
-export class ArticleNewReactiveComponent {
+export class ArticleNewReactiveComponent implements OnInit{
 
     public articleForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder){
+                
+    }
+
+    ngOnInit(): void {
+        const patronURL = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+        const nombres = ["Prueba", "Test", "Mock", "Fake"];
         this.articleForm = this.formBuilder.group({
             uid: [null, [Validators.required, Validators.min(0)]],
-            name: [null, Validators.required],
+            name: [null, [Validators.required, CustomValidator.nameValidator(nombres)]],// this.nameValidator(nombres)
             price: [null, [Validators.required, Validators.min(0.1)]],
-            imageUrl: [null, [Validators.required, Validators.pattern(/\/(\w+)\/(\w+)(\?{1}.*)?$/)]],
-        });        
+            imageUrl: [null, [Validators.required, Validators.pattern(patronURL)]]
+        });
     }
+
+    
+
     createArticle(){
         console.log("CREANDO ARTÍCULO REACTIVO:", this.articleForm);
+    }
+
+    resetForm(){
+        this.articleForm.reset();
     }
 
 }
