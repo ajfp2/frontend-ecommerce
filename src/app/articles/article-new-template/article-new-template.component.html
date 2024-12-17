@@ -25,7 +25,7 @@
             <div class="article-code mb-3">
                 <label for="price" class="form-label">PVP Artículo:</label>
                 <input type="number" aria-describedby="pvpHelp" min="0" class="form-control form-control-sm" placeholder="PVP Artículo" id="price" name="price" ngModel #price="ngModel" required>
-                <div id="pvpHelp" class="form-text" *ngIf="price.dirty && price.invalid">
+                <div id="pvpHelp" class="form-text" *ngIf="(price.dirty || price.touched) && price.invalid">
                     <span *ngIf="price.errors.required">El precio es obligatorio.</span>
                     <span *ngIf="price.errors.min">El precio debe ser mayor a 0.</span>
                 </div>
@@ -34,7 +34,7 @@
             <div class="article-image mb-3">
                 <label for="imageUrl" class="form-label">Imagen Artículo:</label>
                 <input type="text" aria-describedby="imageHelp" class="form-control form-control-sm" placeholder="Imagen Artículo" id="imageUrl" name="imageUrl" ngModel #imageUrl="ngModel" pattern="^http(s?)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(/\S*)?$" required>
-                <div id="imageHelp" class="form-text" *ngIf="imageUrl.dirty && imageUrl.invalid">
+                <div id="imageHelp" class="form-text" *ngIf="(imageUrl.dirty || imageUrl.touched) && imageUrl.invalid">
                     <span *ngIf="imageUrl.errors.required">La imagen es obligatoria.</span>
                     <span *ngIf="imageUrl.errors.pattern">La URL  es incorrecta.</span>
                 </div>
@@ -47,7 +47,7 @@
             </div>
             <button [disabled]="!articleForm.valid" type="submit" class="btn btn-success">GRABAR</button>
             <h4>Formulario Valido => {{ articleForm.valid }}</h4>
-            <h4>Article is {{ article | json}}</h4>
+            <!-- <h4>Article is {{ article | json}}</h4> -->
           </form>
 
     </div>

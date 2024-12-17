@@ -22,7 +22,7 @@ export class ArticleNewTemplateComponent {
     createArticle(articleForm){
       console.log('Artículo form', articleForm.value);
       if (articleForm.valid) {
-        this.article = articleForm.value.article;
+        this.article = articleForm.value;
         console.log('Creando  artículo ', this.article);
       } else {
         console.error('Formulario artículo estado malo');
