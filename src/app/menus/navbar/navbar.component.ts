@@ -10,10 +10,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class NavbarComponent {
 
     @Output() private url: EventEmitter<string> = new EventEmitter();
+    public urlActive = 'inicio';
     
     menuClick(ev, urlText){
         // console.log("Click en", ev);
-        console.log("url a", urlText);
+        this.urlActive = urlText;
+        // console.log("url a", urlText);
         this.url.emit(urlText);
 
     }
