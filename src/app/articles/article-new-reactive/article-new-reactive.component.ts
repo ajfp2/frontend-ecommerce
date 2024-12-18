@@ -12,7 +12,7 @@ import { CustomValidator } from '../../shared/custom-validator';
 export class ArticleNewReactiveComponent implements OnInit{
 
     public articleForm: FormGroup;
-
+    public grabando = false;
     constructor(private formBuilder: FormBuilder){
                 
     }
@@ -22,19 +22,20 @@ export class ArticleNewReactiveComponent implements OnInit{
         
         this.articleForm = this.formBuilder.group({
             uid: [null, [Validators.required, Validators.min(0)]],
-            name: [null, [Validators.required, CustomValidator.nameValidator()]],
+            name: ['', [Validators.required, CustomValidator.nameValidator()]],
             price: [null, [Validators.required, Validators.min(0.1)]],
-            imageUrl: [null, [Validators.required, Validators.pattern(patronURL)]]
+            imageUrl: ['', [Validators.required, Validators.pattern(patronURL)]],
+            isOnSale: false
         });
-    }
-
-    
+    }    
 
     createArticle(){
+        this.grabando = true;
         console.log("CREANDO ARTÍCULO REACTIVO:", this.articleForm.value);
     }
 
     resetForm(){
+        this.grabando = false;
         this.articleForm.reset();
     }
 

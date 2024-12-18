@@ -46,8 +46,10 @@
                 <label class="form-check-label" for="isOnSale">Artículo en venta</label>
             </div>
             <button [disabled]="!articleForm.valid" type="submit" class="btn btn-success">GRABAR</button>
-            <h4>Formulario Valido => {{ articleForm.valid }}</h4>
-            <!-- <h4>Article is {{ article | json}}</h4> -->
+            &nbsp;
+            <button type="reset" class="btn btn-secondary pull-rigth">RESET</button>
+            <h4 class="mt-2">Formulario Valido => {{ articleForm.valid }}</h4>
+            <h4 *ngIf="grabando">Grabando artículo {{ article | json}}</h4>
           </form>
 
     </div>

@@ -12,20 +12,21 @@ import { FormGroup } from '@angular/forms';
 
 export class ArticleNewTemplateComponent {
     public article: Article;
-    public confirmed = false;
+    public grabando = false;
 
     constructor(){
         this.article = new Article(4, 'Superius', 'images/articles/4.png', 47.70, true, 4);
         
     }
-
+    
     createArticle(articleForm){
       console.log('Artículo form', articleForm.value);
       if (articleForm.valid) {
         this.article = articleForm.value;
-        console.log('Creando  artículo ', this.article);
+        this.grabando = true;
+        console.log('Guardando artículo ', this.article);
       } else {
-        console.error('Formulario artículo estado malo');
+        console.error('Formulario artículo incorrecto');
       }      
     }
 }

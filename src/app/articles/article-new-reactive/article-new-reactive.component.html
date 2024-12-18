@@ -43,14 +43,15 @@
 
 
             <div class="mb-3 form-check article-sale">
-                <input type="checkbox" class="form-check-input" id="isOnSale" name="isOnSale">
+                <input type="checkbox" class="form-check-input" id="isOnSale" name="isOnSale" formControlName="isOnSale">
                 <label class="form-check-label" for="isOnSale">Artículo en venta</label>
             </div>
             <button [disabled]="articleForm.invalid" type="submit" class="btn btn-success btn-sm float-left">GRABAR</button>
+            &nbsp;
             <button type="button" (click)="resetForm()"  class="btn btn-secondary btn-sm pull-right">Reset</button>
 
-            <h4 *ngIf="articleForm.valid">Form Article {{ articleForm.value | json }}</h4>
-            <h4>STATUS FROM {{ articleForm.status | json }}</h4>
+            <h4 class="mt-2">STATUS FROM {{ articleForm.status | json }}</h4>
+            <h4 *ngIf="grabando">Grabando datos: {{ articleForm.value | json }}</h4>
           </form>
 
     </div>
