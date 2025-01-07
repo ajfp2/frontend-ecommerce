@@ -13,6 +13,7 @@ import { ArticleListComponent } from './articles/article-list/article-list.compo
 import { NavbarComponent } from './menus/navbar/navbar.component';
 import { ArticleNewTemplateComponent } from './articles/article-new-template/article-new-template.component';
 import { ArticleNewReactiveComponent } from './articles/article-new-reactive/article-new-reactive.component';
+import { ArticleServiceService } from './services/article-service.service';
 
 
 
@@ -31,7 +32,9 @@ import { ArticleNewReactiveComponent } from './articles/article-new-reactive/art
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    ArticleServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

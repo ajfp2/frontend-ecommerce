@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../../modelos/article';
 import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
+import { ArticleServiceService } from '../../services/article-service.service';
 
 @Component({
   selector: 'app-article-list',
@@ -17,30 +18,16 @@ import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
 export class ArticleListComponent implements OnInit{
 
     public articles: Array<Article>;
-    // private counter = 1;
 
-    constructor(){}
+    constructor(private as: ArticleServiceService){}
 
     ngOnInit(): void {
-        this.articles = [
-            new Article(1, 'Bosque Matasnos','images/articles/1.png', 35.5, true, 3),
-            new Article(2, 'Carmelo Rodero Crza','images/articles/2.jpg', 26.05, false, 2),
-            new Article(3, 'Pago Capellanos Roble','images/articles/3.jpg', 15.90, true, 0)
-        ];        
+        this.as.getArticles().subscribe(arts => {         
+          this.articles = arts;
+        });
     }
 
     onChangeQuantity(ev: ArticleQuantityChange){
-        console.log("CHANGE", ev);
-        const article = this.articles.find(a => ev.article.uid === a.uid);
-        article.quantityInCart += ev.quantityChange;
+        this.as.changeQuantity(ev.article.uid, ev.quantityChange);
     }
-
-    // changeStockObject() {
-    //     this.articles.push(new Article(4, 'Test Stock Company - ' + this.counter++,
-    //         'images/articles/3.jpg', 85, false, 80));
-    //   }
-    
-    //   changeStockPrice() {
-    //     this.articles[0].price += 10;
-    //   }
 }

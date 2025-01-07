@@ -8,6 +8,7 @@
             <div class="article-code mb-3">
                 <label for="uid" class="form-label">Código Artículo:</label>
                 <input type="number" aria-describedby="uidHelp" class="form-control form-control-sm" min='1' step='1' placeholder="Código Artículo" id="uid" name="uid" formControlName="uid">
+                <span style="color: blue; font-size: 11px;">Último código usado: {{ ultimoUID }}</span>
                 <div id="uidHelp" class="form-text">
                     <span *ngIf="articleForm.get('uid').invalid && ( articleForm.get('uid').dirty || articleForm.get('uid').touched )">El código es obligatorio.</span>
                     
