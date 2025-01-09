@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ArticleServiceService } from './services/article-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-    title = 'ecommerce';
+    title = 'Ecommerce UOC';
 
     url = "inicio";
     onChangeMenu(ev){
