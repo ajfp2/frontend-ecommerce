@@ -14,16 +14,16 @@ export class ArticleNewReactiveComponent implements OnInit{
 
     public articleForm: FormGroup;
     public grabando = false;
-    public ultimoUID = 0;
+    public ultimoID = 0;
     constructor(private formBuilder: FormBuilder, private as: ArticleServiceService){
                 
     }
 
     ngOnInit(): void {
         const patronURL = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-        this.as.getArticles().subscribe(r => this.ultimoUID = r.length);
+        this.as.getArticles('').subscribe(r => this.ultimoID = r.length);
         this.articleForm = this.formBuilder.group({
-            uid: [null, [Validators.required, Validators.min(0)]],
+            id: [null, [Validators.required, Validators.min(0)]],
             name: ['', [Validators.required, CustomValidator.nameValidator()]],
             price: [null, [Validators.required, Validators.min(0.1)]],
             imageUrl: ['', [Validators.required, Validators.pattern(patronURL)]],
@@ -34,9 +34,11 @@ export class ArticleNewReactiveComponent implements OnInit{
     createArticle(){
         this.grabando = true;
         this.as.create(this.articleForm.value).subscribe( (res: any) => {
-            alert(res.msg);
+            console.log("res", res);            
+            alert(`El Articulo con código ${ res.id } creado correctamente`);
         }, err => {
-            alert(err.msg);
+            console.log("err", err);
+            alert(err.error.msg);
         });
         console.log("CREANDO ARTÍCULO REACTIVO:", this.articleForm.value);
     }

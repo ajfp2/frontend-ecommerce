@@ -3,7 +3,7 @@
 
 export class Article {
     constructor(
-        public uid: number,
+        public id: number,
         public name: string,
         public imageUrl: string,
         public price: number, 
@@ -15,7 +15,7 @@ export class Article {
 
 /*
 export interface ArticleI {
-    uid: number;
+    id: number;
     name: string;
     imageUrl: string;
     price: number;
