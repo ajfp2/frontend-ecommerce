@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../modelos/article';
 import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
 import { ArticleServiceService } from '../../services/article-service.service';
-import { Observable, share } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Observable, share, startWith, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-article-list',
@@ -15,7 +15,7 @@ import { Observable, share } from 'rxjs';
         <div class="col-12">
             <div class="input-group my-3">
                 <span class="input-group-text" id="basic-addon1">Buscar articulos: </span>
-                <input type="text" class="form-control form-control-sm" placeholder="Buscar ..." (keyup)="buscar(txtBuscar.value)" #txtBuscar>
+                <input type="text" class="form-control form-control-sm" placeholder="Buscar ..." (keyup)="buscar()" [(ngModel)]="search">
             </div>      
         </div>
     </div>
@@ -30,31 +30,30 @@ export class ArticleListComponent implements OnInit{
 
     //public articles: Array<Article>;
     public articles$: Observable<Article[]>;
-    public search = '';
+    public search: string = '';
+    private searchTerms: Subject<string> = new Subject();
 
     constructor(private as: ArticleServiceService){
 
     }
 
     ngOnInit(): void {
-      this.articles$ = this.as.getArticles(this.search).pipe(share());
-        // this.as.getArticles().subscribe(arts => {         
-        //   this.articles$ = arts;
-        // });
+        // this.articles$ = this.as.getArticles(this.search).pipe(share());
+        this.articles$ = this.searchTerms.pipe(
+            startWith(this.search),
+            debounceTime(500),
+            distinctUntilChanged(),
+            switchMap((q) => this.as.getArticles(q)),
+            share()
+        );
     }
 
     onChangeQuantity(ev: ArticleQuantityChange){
         this.as.changeQuantity(ev.article.id, ev.quantityChange);
     }
 
-    buscar( termino: string ): any{
-        if ( termino.length === 0) {
-            //return this.productos = this.productosTemp;
-            this.search = termino;
-        } else this.articles$ = this.as.getArticles(this.search);
-
-        this.search = termino;
-        console.log("Buscar", this.search);
-        
+    buscar(): any{
+        this.searchTerms.next(this.search);
+        console.log("Buscar", this.search);        
     }
 }

@@ -26,7 +26,7 @@ export class ArticleServiceService {
 
     getArticles(query: string): Observable<Article[]>{
         // return of(this.articles);
-        return this.http.get<Article[]>(`${ server }/api/articles?q=${ query }`);
+        return this.http.get<Article[]>(`${ server }/api/articles`, { params: {q: query} });
     }
 
     changeQuantity(articleID: number, chagenInQuantity: number): Observable <Article>{
