@@ -23,12 +23,9 @@ export class ArticleServiceService {
         return this.http.get<Article[]>(`${ server }/api/articles`, { params: {q: query} });
     }
 
-    changeQuantity(articleID: number, chagenInQuantity: number): Observable <Article>{
+    changeQuantity(articleID: number, changeInQuantity: number): Observable <any>{
         console.log("CHANGE serv", articleID);
-        const article = this.articles.find(a => articleID === a.id);
-        article.quantityInCart += chagenInQuantity;
-
-        return of(article);
+        return this.http.patch(`${ server }/api/articles/${ articleID }`, {changeInQuantity});
     }
 
 

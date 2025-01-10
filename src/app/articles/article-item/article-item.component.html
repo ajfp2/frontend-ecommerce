@@ -12,7 +12,6 @@
     </div>
     <div class="card-footer d-flex justify-content-between bg-light" *ngIf="article.isOnSale">
         <button class="btn btn-primary btn-sm" (click)="addToCart();">+ Añadir</button>
-        <!-- <button class="btn btn-primary" (click)="changeArticlePrice()">Cambiar</button> -->
         <button class="btn btn-danger btn-sm" (click)="removeToCart();" [disabled]="article.quantityInCart <= 0">- Borrar</button>
     </div>
 </div>

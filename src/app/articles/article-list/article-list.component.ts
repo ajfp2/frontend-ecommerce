@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../modelos/article';
 import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
 import { ArticleServiceService } from '../../services/article-service.service';
-import { debounceTime, distinctUntilChanged, Observable, share, startWith, Subject, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, merge, Observable, share, startWith, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-article-list',
@@ -32,6 +32,7 @@ export class ArticleListComponent implements OnInit{
     public articles$: Observable<Article[]>;
     public search: string = '';
     private searchTerms: Subject<string> = new Subject();
+    private reloadArticlesList: Subject<void> = new Subject();
 
     constructor(private as: ArticleServiceService){
 
@@ -44,12 +45,22 @@ export class ArticleListComponent implements OnInit{
             debounceTime(500),
             distinctUntilChanged(),
             switchMap((q) => this.as.getArticles(q)),
+            //merge(this.reloadArticlesList),
             share()
         );
     }
 
     onChangeQuantity(ev: ArticleQuantityChange){
-        this.as.changeQuantity(ev.article.id, ev.quantityChange);
+        this.as.changeQuantity(ev.article.id, ev.quantityChange).subscribe((res) => {
+                console.log(res.msg);
+                this.reloadArticlesList.next();
+            }, 
+            err => {
+                alert(err.error.msg);
+                console.error(err);
+                
+            }
+        );
     }
 
     buscar(): any{
