@@ -15,13 +15,7 @@ export class ArticleServiceService {
     private articles: Article[];
 
     constructor(private http: HttpClient) {
-        console.log("Service");
-        
-        // this.articles = [
-        //     new Article(1, 'Bosque Matasnos','images/articles/1.png', 35.5, true, 3),
-        //     new Article(2, 'Carmelo Rodero Crza','images/articles/2.jpg', 26.05, false, 2),
-        //     new Article(3, 'Pago Capellanos Roble','images/articles/3.jpg', 15.90, true, 0)
-        // ];
+        console.log("Service Constructor");
     }
 
     getArticles(query: string): Observable<Article[]>{
@@ -39,16 +33,7 @@ export class ArticleServiceService {
 
 
     create(article: Article): Observable<any> {
-
         const {id, ...articleN} = article;
         return this.http.post(`${ server }/api/articles`, articleN);
-
-        // let foundArticle = this.articles.find(each => each.id === article.id);
-        // if (foundArticle) {
-        //     return throwError({msg: 'El Articulo con código ' + article.id + ' ya existe en el sistema'});
-        // }        
-        // this.articles.push(article);
-        
-        // return of({msg: 'El Articulo con código ' + article.id + ' creado correctamente'});
     }    
 }

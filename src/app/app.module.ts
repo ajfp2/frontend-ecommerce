@@ -8,6 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 // Main Component
 import { AppComponent } from './app.component';
 
+// Pipes
+import { ImagePipe } from './pipes/image.pipe';
+
 // Components
 import { ArticleItemComponent } from './articles/article-item/article-item.component';
 import { ArticleListComponent } from './articles/article-list/article-list.component';
@@ -19,6 +22,7 @@ import { ArticleServiceService } from './services/article-service.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,8 @@ import { ArticleServiceService } from './services/article-service.service';
     ArticleListComponent,
     NavbarComponent,
     ArticleNewTemplateComponent,
-    ArticleNewReactiveComponent
+    ArticleNewReactiveComponent,
+    ImagePipe
   ],
   imports: [
     BrowserModule,
