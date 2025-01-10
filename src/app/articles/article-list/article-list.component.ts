@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../modelos/article';
 import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
 import { ArticleServiceService } from '../../services/article-service.service';
-import { Observable } from 'rxjs';
+import { Observable, share } from 'rxjs';
 
 @Component({
   selector: 'app-article-list',
   standalone: false,
   
   template: `
-    <h1 class="mx-auto text-center pb-2">Ecommerce PEC-6</h1>
+    <h2 class="mx-auto mt-3 text-center pb-2">Listado de Artículos ({{(articles$ | async)?.length}})</h2>
+
     <div class="row mx-auto">
         <div class="col-12">
-            <div class="input-group mb-3">
+            <div class="input-group my-3">
                 <span class="input-group-text" id="basic-addon1">Buscar articulos: </span>
                 <input type="text" class="form-control form-control-sm" placeholder="Buscar ..." (keyup)="buscar(txtBuscar.value)" #txtBuscar>
             </div>      
@@ -36,7 +37,7 @@ export class ArticleListComponent implements OnInit{
     }
 
     ngOnInit(): void {
-      this.articles$ = this.as.getArticles(this.search);
+      this.articles$ = this.as.getArticles(this.search).pipe(share());
         // this.as.getArticles().subscribe(arts => {         
         //   this.articles$ = arts;
         // });

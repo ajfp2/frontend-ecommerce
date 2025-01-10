@@ -15,8 +15,14 @@ export class ArticleNewTemplateComponent {
     public grabando = false;
 
     constructor(){
-        this.article = new Article(4, 'Superius', 'images/articles/4.png', 47.70, true, 4);
-        
+        this.article = {
+          id:4,
+          name: 'Superius',
+          imageUrl: 'images/articles/4.png',
+          price: 47.70,
+          isOnSale: true,
+          quantityInCart: 4
+        };        
     }
     
     createArticle(articleForm){
