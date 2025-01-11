@@ -19,12 +19,10 @@ export class ArticleServiceService {
     }
 
     getArticles(query: string): Observable<Article[]>{
-        // return of(this.articles);
         return this.http.get<Article[]>(`${ server }/api/articles`, { params: {q: query} });
     }
 
     changeQuantity(articleID: number, changeInQuantity: number): Observable <any>{
-        console.log("CHANGE serv", articleID);
         return this.http.patch(`${ server }/api/articles/${ articleID }`, {changeInQuantity});
     }
 

@@ -23,7 +23,7 @@ export class ArticleNewReactiveComponent implements OnInit{
         const patronURL = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
         this.as.getArticles('').subscribe(r => this.ultimoID = r.length);
         this.articleForm = this.formBuilder.group({
-            id: [null, [Validators.required, Validators.min(0)]],
+            id: [null, [Validators.min(0)]],
             name: ['', [Validators.required, CustomValidator.nameValidator()]],
             price: [null, [Validators.required, Validators.min(0.1)]],
             imageUrl: ['', [Validators.required, Validators.pattern(patronURL)]],

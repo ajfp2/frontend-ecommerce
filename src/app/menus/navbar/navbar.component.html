@@ -16,12 +16,14 @@
                 <li class="nav-item">
                     <a class="nav-link" [class]="urlActive === 'inicio' ? 'active' : ''" aria-current="page" href="#" (click)="menuClick($event, 'inicio');">Artículos</a>
                 </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#" [class]="urlActive === 'reactivo' ? 'active' : ''" (click)="menuClick($event, 'reactivo');">Nuevo Artículo Reactivo</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#" [class]="urlActive === 'template' ? 'active' : ''" (click)="menuClick($event, 'template');">Nuevo Artículo Template</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" [class]="urlActive === 'reactivo' ? 'active' : ''" (click)="menuClick($event, 'reactivo');">Nuevo Artículo Reactivo</a>
-                </li>                
             </ul>
         </div>
     </div>

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../modelos/article';
 import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
 import { ArticleServiceService } from '../../services/article-service.service';
-import { debounceTime, distinctUntilChanged, merge, Observable, share, startWith, Subject, switchMap } from 'rxjs';
+import {  Observable, Subject } from 'rxjs';
+import { startWith, debounceTime, distinctUntilChanged, merge, switchMap, share } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-article-list',
@@ -38,8 +40,7 @@ export class ArticleListComponent implements OnInit{
 
     }
 
-    ngOnInit(): void {
-        // this.articles$ = this.as.getArticles(this.search).pipe(share());
+    ngOnInit(): void {        
         this.articles$ = this.searchTerms.pipe(
             startWith(this.search),
             debounceTime(500),
@@ -48,6 +49,13 @@ export class ArticleListComponent implements OnInit{
             //merge(this.reloadArticlesList),
             share()
         );
+
+        // this.articles$ = this.searchTerms
+        //     .startWith(0)
+        //     .debounceTime(300)
+        //     .distinctUntilChanged()
+        //     .merge(this.reloadArticlesList)
+        //     .switchMap((query) => this.as.getArticles(this.search));
     }
 
     onChangeQuantity(ev: ArticleQuantityChange){
@@ -67,4 +75,8 @@ export class ArticleListComponent implements OnInit{
         this.searchTerms.next(this.search);
         console.log("Buscar", this.search);        
     }
+
+    onCreate() {
+        this.reloadArticlesList.next();
+      }
 }
