@@ -23,7 +23,7 @@ export class ArticleNewReactiveComponent implements OnInit{
         const patronURL = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
         this.as.getArticles('').subscribe(r => this.ultimoID = r.length);
         this.articleForm = this.formBuilder.group({
-            id: [null, [Validators.min(0)]],
+            //id: [null, [Validators.min(0)]],
             name: ['', [Validators.required, CustomValidator.nameValidator()]],
             price: [null, [Validators.required, Validators.min(0.1)]],
             imageUrl: ['', [Validators.required, Validators.pattern(patronURL)]],
@@ -35,7 +35,7 @@ export class ArticleNewReactiveComponent implements OnInit{
         this.grabando = true;
         this.as.create(this.articleForm.value).subscribe( (res: any) => {
             console.log("res", res);            
-            alert(`El Articulo con código ${ res.id } creado correctamente`);
+            alert(`El Articulo con código ${ res.id } ha sido creado correctamente`);
         }, err => {
             console.log("err", err);
             alert(err.error.msg);

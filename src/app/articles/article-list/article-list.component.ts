@@ -3,7 +3,7 @@ import { Article } from '../../modelos/article';
 import { ArticleQuantityChange } from '../../modelos/article-quantity-change';
 import { ArticleServiceService } from '../../services/article-service.service';
 import {  Observable, Subject } from 'rxjs';
-import { startWith, debounceTime, distinctUntilChanged, merge, switchMap, share } from 'rxjs/operators';
+import { startWith, debounceTime, distinctUntilChanged, merge, switchMap, share, mergeWith } from 'rxjs/operators';
 
 
 @Component({
@@ -30,28 +30,25 @@ import { startWith, debounceTime, distinctUntilChanged, merge, switchMap, share 
 })
 export class ArticleListComponent implements OnInit{
 
-    //public articles: Array<Article>;
     public articles$: Observable<Article[]>;
     public search: string = '';
     private searchTerms: Subject<string> = new Subject();
+    // private reloadArticlesList: Subject<void> = new Subject();
     private reloadArticlesList: Subject<void> = new Subject();
-
-    constructor(private as: ArticleServiceService){
-
-    }
+    constructor(private as: ArticleServiceService){}
 
     ngOnInit(): void {        
         this.articles$ = this.searchTerms.pipe(
             startWith(this.search),
             debounceTime(500),
-            distinctUntilChanged(),
-            switchMap((q) => this.as.getArticles(q)),
-            //merge(this.reloadArticlesList),
+            distinctUntilChanged(),            
+            mergeWith(this.reloadArticlesList),
+            switchMap((q) => this.as.getArticles(this.search)),
             share()
         );
 
         // this.articles$ = this.searchTerms
-        //     .startWith(0)
+        //     .startWith(this.search)
         //     .debounceTime(300)
         //     .distinctUntilChanged()
         //     .merge(this.reloadArticlesList)
@@ -78,5 +75,5 @@ export class ArticleListComponent implements OnInit{
 
     onCreate() {
         this.reloadArticlesList.next();
-      }
+    }
 }
