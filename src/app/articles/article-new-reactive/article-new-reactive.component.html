@@ -5,14 +5,14 @@
         <h2>Nuevo Artículo Reactivo</h2><hr>
         <form (ngSubmit)="createArticle()" [formGroup]="articleForm">
 
-            <!-- <div class="article-code mb-3">
+            <div class="article-code mb-3">
                 <label for="id" class="form-label">Código Artículo:</label>
                 <input type="number" aria-describedby="uidHelp" class="form-control form-control-sm" min='1' step='1' placeholder="Código Artículo" id="id" name="id" formControlName="id">
                 <span style="color: blue; font-size: 11px;">Último código usado: {{ ultimoID }}</span>
                 <div id="uidHelp" class="form-text">
                     <span *ngIf="articleForm.get('id').invalid && ( articleForm.get('id').dirty || articleForm.get('id').touched )">El código es obligatorio.</span>                    
                 </div>
-            </div> -->
+            </div>
 
             <div class="article-name mb-3">
                 <label for="name" class="form-label">Nombre Artículo:</label>

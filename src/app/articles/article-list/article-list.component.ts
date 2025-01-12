@@ -57,13 +57,12 @@ export class ArticleListComponent implements OnInit{
 
     onChangeQuantity(ev: ArticleQuantityChange){
         this.as.changeQuantity(ev.article.id, ev.quantityChange).subscribe((res) => {
-                console.log(res.msg);
+                alert(res.msg);
                 this.reloadArticlesList.next();
             }, 
             err => {
                 alert(err.error.msg);
-                console.error(err);
-                
+                console.error(err);                
             }
         );
     }
