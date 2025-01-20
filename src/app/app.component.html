@@ -5,8 +5,9 @@
 <div class="container-fluid" class="mt-3">   
     <app-article-list *ngIf="url === 'inicio'" #articleList></app-article-list>
     <app-article-new-reactive *ngIf="url === 'reactivo'" (productCreated)="articleList.onCreate()"></app-article-new-reactive>
-    <app-article-new-template *ngIf="url ==='template'"></app-article-new-template>
-    
+    <!-- <app-article-new-template *ngIf="url ==='template'"></app-article-new-template> -->
+    <app-login></app-login>
+    <app-register></app-register>
     <router-outlet />
 </div>
 

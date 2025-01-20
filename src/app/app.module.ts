@@ -11,15 +11,19 @@ import { AppComponent } from './app.component';
 // Pipes
 import { ImagePipe } from './pipes/image.pipe';
 
-// Components
+//Services
+import { ArticleServiceService } from './services/article-service.service';
+
+// Components Article
 import { ArticleItemComponent } from './articles/article-item/article-item.component';
 import { ArticleListComponent } from './articles/article-list/article-list.component';
 import { NavbarComponent } from './menus/navbar/navbar.component';
-import { ArticleNewTemplateComponent } from './articles/article-new-template/article-new-template.component';
+// import { ArticleNewTemplateComponent } from './articles/article-new-template/article-new-template.component';
 import { ArticleNewReactiveComponent } from './articles/article-new-reactive/article-new-reactive.component';
-import { ArticleServiceService } from './services/article-service.service';
-
-
+import { ArticleDetailComponent } from './articles/article-detail/article-detail.component';
+//user
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
 
 
 
@@ -29,9 +33,12 @@ import { ArticleServiceService } from './services/article-service.service';
     ArticleItemComponent,
     ArticleListComponent,
     NavbarComponent,
-    ArticleNewTemplateComponent,
+    // ArticleNewTemplateComponent,
     ArticleNewReactiveComponent,
-    ImagePipe
+    ImagePipe,
+    LoginComponent,
+    RegisterComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,
