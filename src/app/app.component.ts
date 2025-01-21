@@ -10,9 +10,8 @@ import { ArticleServiceService } from './services/article-service.service';
 export class AppComponent {
     title = 'Ecommerce UOC';
 
-    url = "inicio";
-    onChangeMenu(ev){
-        // console.log("Menú:", ev);
-        this.url = ev;        
-    }
+    // url = "inicio";
+    // onChangeMenu(ev){
+    //     this.url = ev;        
+    // }
 }

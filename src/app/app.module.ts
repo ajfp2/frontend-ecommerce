@@ -13,6 +13,8 @@ import { ImagePipe } from './pipes/image.pipe';
 
 //Services
 import { ArticleServiceService } from './services/article-service.service';
+import { UserService } from './services/user.service';
+import { UserStoreService } from './services/user-store.service';
 
 // Components Article
 import { ArticleItemComponent } from './articles/article-item/article-item.component';
@@ -24,6 +26,8 @@ import { ArticleDetailComponent } from './articles/article-detail/article-detail
 //user
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
+
+
 
 
 
@@ -48,7 +52,9 @@ import { RegisterComponent } from './user/register/register.component';
     HttpClientModule
   ],
   providers: [
-    ArticleServiceService
+    ArticleServiceService,
+    UserService,
+    UserStoreService
   ],
   bootstrap: [AppComponent]
 })

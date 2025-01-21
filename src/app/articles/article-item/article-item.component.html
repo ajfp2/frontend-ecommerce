@@ -1,5 +1,5 @@
 <div class="card" style="max-width: 320px">
-    <img [src]="article.imageUrl | image" style="max-height: 420px" class="card-img-top" alt="Product Image" [class]="article.isOnSale ? 'sale' : 'notSale'">
+    <img routerLink="/article/{{ article.id }}" [src]="article.imageUrl | image" style="max-height: 420px" class="card-img-top cursor" alt="Product Image" [class]="article.isOnSale ? 'sale' : 'notSale'">
     <div class="card-body">
         <h5 class="card-title">{{ article.name }}</h5>
         <p class="card-text">Short product description goes here.</p>
