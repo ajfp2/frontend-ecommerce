@@ -29,17 +29,10 @@ export class LoginComponent implements OnInit {
             alert('ERROR LOGIN- Campos incorrectos');
             return;
         }
-        this.us.login( this.loginForm.value )
-        .subscribe(resp => {
-            console.log("LOGIN:", resp);
-            alert(resp.msg);
-            // if (this.loginForm.get('remember').value){
-            //     localStorage.setItem('username', this.loginForm.get('email').value);
-            // } else {
-            //     localStorage.removeItem('email');
-            // }
-            // IR al dashboard
-            this.router.navigateByUrl('/article/list');
+        this.us.login( this.loginForm.value ).subscribe(resp => {
+            alert(resp.msg);            
+            // IR al listado de artículos
+            this.router.navigate(['article', 'list']);
         }, (err) => {
             console.error(err);
             alert(err.error.msg);
