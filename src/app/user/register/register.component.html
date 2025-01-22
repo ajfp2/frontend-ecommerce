@@ -5,25 +5,31 @@
             <div class="text-center mb-5 text-dark">UOC Ecommerce</div>
             <div class="card my-5">
 
-                <form class="card-body cardbody-color p-lg-5">
+                <form class="card-body cardbody-color p-lg-5" id="loginform" autocomplete="off" [formGroup]="registerForm" (ngSubmit)="createUser()">
 
                     <div class="text-center">                        
                         <img src="images/logos/register-user.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">
                     </div>
 
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="Username" aria-describedby="emailHelp" placeholder="Usuario (username)">
+                        <input type="text" aria-describedby="usernameHelp" class="form-control" id="username" name="username" formControlName="username" placeholder="Usuario (username)">
+                        <div id="usernameHelp" class="form-text" *ngIf="registerForm.get('username').invalid && ( registerForm.get('username').dirty || registerForm.get('username').touched )">
+                            <span *ngIf="registerForm.get('username').errors.required">El usuario es obligatorio.</span>
+                        </div>
                     </div>
 
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" aria-describedby="pwdHelp" class="form-control" id="password" name="password" formControlName="password" placeholder="Password">
+                        <div id="pwdHelp" class="form-text" *ngIf="registerForm.get('password').invalid && ( registerForm.get('password').dirty || registerForm.get('password').touched )">
+                            <span *ngIf="registerForm.get('password').errors.required">El password es obligatorio.</span>
+                        </div>
                     </div>
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-color px-5 mb-5 w-100">Registrarse</button>
                     </div>
 
-                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">Ya estas registrado?<a href="#" class="text-dark fw-bold"> Iniciar Sesión</a></div>
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">Ya estas registrado?<a routerLink="/login" class="text-dark fw-bold"> Iniciar Sesión</a></div>
 
                 </form>
             </div>

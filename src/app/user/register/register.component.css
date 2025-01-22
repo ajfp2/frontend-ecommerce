@@ -18,3 +18,7 @@
   a{
     text-decoration: none;
   }
+
+  .form-text {
+    color: rgb(226, 101, 101);
+  }  

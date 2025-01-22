@@ -15,7 +15,7 @@ export class ArticleServiceService {
     private articles: Article[];
 
     constructor(private http: HttpClient) {
-        console.log("Service Constructor");
+        console.log("Service Article Constructor");
     }
 
     getArticles(query: string): Observable<Article[]>{
