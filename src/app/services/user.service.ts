@@ -22,16 +22,11 @@ export class UserService {
     login(user: User): Observable<any> {
         return this.http.post<User>(`${ server }/user/login`, user).pipe(
             map((resp: any) => {
+                this.st.user = user.username;
                 this.st.token = resp.token;
                 return resp;
             })
         );
-    }
-
-    logout() {
-        this.st.token = null;
-        localStorage.removeItem('user_uoc');
-        // this.router.navigateByUrl('/login');
     }
 
     create(user: User): Observable<User> {

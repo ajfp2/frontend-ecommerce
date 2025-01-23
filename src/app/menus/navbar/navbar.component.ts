@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { UserStoreService } from '../../services/user-store.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +10,19 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class NavbarComponent {
 
-    @Output() private url: EventEmitter<string> = new EventEmitter();
-    public urlActive = 'inicio';
-    
-    menuClick(ev, urlText){
-        // console.log("Click en", ev);
-        this.urlActive = urlText;
-        // console.log("url a", urlText);
-        this.url.emit(urlText);
+    constructor(public st: UserStoreService){
 
     }
+
+
+    //@Output() private url: EventEmitter<string> = new EventEmitter();
+    //public urlActive = 'inicio';
+    
+    // menuClick(ev, urlText){
+    //     // console.log("Click en", ev);
+    //     this.urlActive = urlText;
+    //     // console.log("url a", urlText);
+    //     this.url.emit(urlText);
+
+    // }
 }

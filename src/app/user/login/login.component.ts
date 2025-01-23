@@ -30,8 +30,7 @@ export class LoginComponent implements OnInit {
             return;
         }
         this.us.login( this.loginForm.value ).subscribe(resp => {
-            alert(resp.msg);
-            localStorage.setItem('user_uoc', this.loginForm.get('username').value);
+            alert(resp.msg);            
             // IR al listado de artículos
             this.router.navigate(['article', 'list']);
         }, (err) => {
