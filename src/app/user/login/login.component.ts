@@ -26,11 +26,12 @@ export class LoginComponent implements OnInit {
     login() {
         this.grabando = true;
         if (this.loginForm.invalid) {
-            alert('ERROR LOGIN- Campos incorrectos');
+            alert('ERROR LOGIN- Formulario incorrecto');
             return;
         }
         this.us.login( this.loginForm.value ).subscribe(resp => {
-            alert(resp.msg);            
+            alert(resp.msg);
+            localStorage.setItem('user_uoc', this.loginForm.get('username').value);
             // IR al listado de artículos
             this.router.navigate(['article', 'list']);
         }, (err) => {

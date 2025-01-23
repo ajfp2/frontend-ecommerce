@@ -5,13 +5,14 @@ import { RegisterComponent } from './user/register/register.component';
 import { ArticleListComponent } from './articles/article-list/article-list.component';
 import { ArticleNewReactiveComponent } from './articles/article-new-reactive/article-new-reactive.component';
 import { ArticleDetailComponent } from './articles/article-detail/article-detail.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'article/list', component: ArticleListComponent },
-    { path: 'article/create', component: ArticleNewReactiveComponent },
+    { path: 'article/create', component: ArticleNewReactiveComponent, canActivate: [authGuard] },
     { path: 'article/:id', component: ArticleDetailComponent },
     { path: '**', redirectTo: '/register' }
 ];
