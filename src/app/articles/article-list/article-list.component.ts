@@ -11,17 +11,20 @@ import { startWith, debounceTime, distinctUntilChanged, merge, switchMap, share,
   standalone: false,
   
   template: `
-    <h2 class="mx-auto mt-3 text-center pb-2">Listado de Artículos ({{(articles$ | async)?.length}})</h2>
-
-    <div class="row mx-auto">
-        <div class="col-12">
+    
+    <h2 class="text-center mt-3 "><u>Listado de Artículos </u>({{(articles$ | async)?.length}})</h2>
+    
+    <div class="row justify-content-center mb-2">
+        <div class="col-4">
             <div class="input-group my-3">
                 <span class="input-group-text" id="basic-addon1">Buscar articulos: </span>
                 <input type="text" class="form-control form-control-sm" placeholder="Buscar ..." (keyup)="buscar()" [(ngModel)]="search">
-            </div>      
+            </div> 
         </div>
     </div>
-    <div class="row mx-auto">
+
+    
+    <div class="row mx-auto justify-content-center mt-3">
         <app-article-item class="col-auto" *ngFor="let item of articles$ | async" [article]="item" (quantityChange)="onChangeQuantity($event);"></app-article-item>
     </div>
   `,

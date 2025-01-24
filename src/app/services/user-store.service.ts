@@ -8,10 +8,16 @@ export class UserStoreService {
 
     private _token: string = null;
     private _user: string = '';
-    constructor(private router: Router) { console.log("ST", this._token) }
+
+    constructor(private router: Router) { 
+        console.log("STORAGE USER", this._token);
+        this._user = localStorage.getItem('user_uoc') || '';
+        this._token = localStorage.getItem('token_uoc') || null;
+    }
 
     set token(token: string) {
         this._token = token;
+        localStorage.setItem('token_uoc', this._token);
     }
 
     get token() {
