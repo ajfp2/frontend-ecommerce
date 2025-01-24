@@ -42,6 +42,6 @@ export class UserStoreService {
         this.user = '';
         this.router.navigate(['login']);
         //localStorage.removeItem('user_uoc');
-        // this.router.navigateByUrl('/login');
+        //localStorage.removeItem('token_uoc');
     }
 }

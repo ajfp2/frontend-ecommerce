@@ -4,7 +4,7 @@
     <div class="row">
         <!-- Product Images -->
         <div class="col-md-6 mb-4">
-            <img [src]="article.imageUrl | image" alt="Article Detail" class="img-fluid rounded mb-3 product-image" id="mainImage">
+            <img [src]="article.imageUrl | image" loading="lazy" alt="Article Detail" class="img-fluid rounded mb-3 product-image" id="mainImage">
         </div>
 
         <!-- Product Details -->
@@ -27,7 +27,7 @@
             
             <div class="mb-4">
                 <label for="quantity" class="form-label">STOCK:</label>
-                <input type="number" class="form-control" id="quantity" [value]="article.quantityInCart" min="1" style="width: 80px;">
+                <input type="number" class="form-control" id="quantity" [value]="article.quantityInCart" style="width: 115px;" disabled>
             </div>
 
             <button class="btn btn-primary btn-lg mb-3 me-2">

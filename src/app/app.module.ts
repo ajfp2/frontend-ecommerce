@@ -3,13 +3,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // Main Component
 import { AppComponent } from './app.component';
 
 // Pipes
 import { ImagePipe } from './pipes/image.pipe';
+
+//Interceptor
+import { ArticleAppInterceptor } from './interceptors/article-app.interceptor';
 
 //Services
 import { ArticleServiceService } from './services/article-service.service';
@@ -26,6 +29,7 @@ import { ArticleDetailComponent } from './articles/article-detail/article-detail
 //user
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
+
 
 
 
@@ -52,7 +56,13 @@ import { RegisterComponent } from './user/register/register.component';
   providers: [
     ArticleServiceService,
     UserService,
-    UserStoreService
+    UserStoreService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ArticleAppInterceptor,
+      multi: true,
+    }
+      
   ],
   bootstrap: [AppComponent]
 })
