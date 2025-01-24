@@ -11,8 +11,8 @@ export class UserStoreService {
 
     constructor(private router: Router) { 
         console.log("STORAGE USER", this._token);
-        this._user = localStorage.getItem('user_uoc') || '';
-        this._token = localStorage.getItem('token_uoc') || null;
+        this._user = localStorage.getItem('user_uoc');
+        this._token = localStorage.getItem('token_uoc');
     }
 
     set token(token: string) {
@@ -39,9 +39,9 @@ export class UserStoreService {
 
     isLoggedOut() {
         this.token = null;
-        this.user = '';
-        this.router.navigate(['login']);
-        //localStorage.removeItem('user_uoc');
-        //localStorage.removeItem('token_uoc');
+        this.user = '';        
+        localStorage.removeItem('user_uoc');
+        localStorage.removeItem('token_uoc');
+        this.router.navigate(['user', 'login']);
     }
 }

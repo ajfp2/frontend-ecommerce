@@ -27,14 +27,23 @@
             
             <div class="mb-4">
                 <label for="quantity" class="form-label">STOCK:</label>
-                <input type="number" class="form-control" id="quantity" [value]="article.quantityInCart" style="width: 115px;" disabled>
+                <input type="number" aria-describedby="stockHelp" class="form-control" id="quantity" [value]="article.quantityInCart" style="width: 115px;" disabled>
+                <div id="stockHelp" class="form-text">
+                    <span *ngIf="!article.isOnSale" style="color: red;">Artículo NO disponible.</span>                    
+                </div>
             </div>
 
-            <button class="btn btn-primary btn-lg mb-3 me-2">
-                <i class="bi bi-cart-plus"></i> Añadir
-            </button>
-            <button class="btn btn-outline-danger btn-lg mb-3">
-                <i class="bi bi-trash"></i> Quitar
+            <div id="carritoCompra" *ngIf="article.isOnSale">
+                <button class="btn btn-primary btn-lg mb-3 me-2" (click)="addToCart()">
+                    <i class="bi bi-cart-plus"></i> Añadir
+                </button>
+                <button class="btn btn-outline-danger btn-lg mb-3" (click)="removeToCart()">
+                    <i class="bi bi-trash"></i> Quitar
+                </button>
+            </div>
+
+            <button class="btn btn-secondary btn-lg mb-3" routerLink="/article/list">
+                <i class="bi bi-return"></i> Volver
             </button>
 
             <div class="mt-4">

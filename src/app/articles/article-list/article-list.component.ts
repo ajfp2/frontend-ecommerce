@@ -49,18 +49,11 @@ export class ArticleListComponent implements OnInit{
             switchMap((q) => this.as.getArticles(this.search)),
             share()
         );
-
-        // this.articles$ = this.searchTerms
-        //     .startWith(this.search)
-        //     .debounceTime(300)
-        //     .distinctUntilChanged()
-        //     .merge(this.reloadArticlesList)
-        //     .switchMap((query) => this.as.getArticles(this.search));
     }
 
     onChangeQuantity(ev: ArticleQuantityChange){
         this.as.changeQuantity(ev.article.id, ev.quantityChange).subscribe((res) => {
-                alert(res.msg);
+                console.log(res.msg);
                 this.reloadArticlesList.next();
             }, 
             err => {

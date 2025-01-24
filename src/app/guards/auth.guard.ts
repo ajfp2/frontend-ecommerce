@@ -13,7 +13,7 @@ export const authGuard: CanActivateFn = (route, state) => {
         return true;
     } else {
         console.log('AuthGuard#canActivate Acceso denegado');
-        inject(Router).navigate(['/login']);
+        inject(Router).navigate(['user', 'login']);
         return false;
     }    
 };

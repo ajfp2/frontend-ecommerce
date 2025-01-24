@@ -23,4 +23,29 @@ export class ArticleDetailComponent implements OnInit{
         })
     }
 
+    addToCart(){
+        console.log('Unidad añadida al stock en article-item');
+        this.article.quantityInCart += 1;
+        this.as.changeQuantity(this.article.id, 1).subscribe((res) => {
+            console.log(res.msg);
+        }, 
+        err => {
+            alert(err.error.msg);
+            console.error(err);                
+        });
+        //this.quantityChange.emit({ article: this.article, quantityChange: 1});
+    }
+
+    removeToCart(){
+        console.log('Unidad borrada del stock en article-item');
+        this.article.quantityInCart -= 1;
+        this.as.changeQuantity(this.article.id, -1).subscribe((res) => {
+            console.log(res.msg);
+        }, 
+        err => {
+            alert(err.error.msg);
+            console.error(err);                
+        });
+    }
+
 }
