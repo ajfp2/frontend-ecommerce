@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ImagePipe implements PipeTransform {
     transform(imageUrl: string): string {
         if (!imageUrl){
-            return 'images/articles/default.jpg';
+            return 'assets/images/default.jpg';
         } else return imageUrl;
     }
 }
