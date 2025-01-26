@@ -27,6 +27,13 @@ export class ArticleItemComponent implements OnInit{
 
     }
 
+    // "assets": [
+    //           {
+    //             "glob": "**/*",
+    //             "input": "public"
+    //           }
+    //         ],
+
     addToCart(){
         console.log('Unidad añadida al stock en article-item');
         this.quantityChange.emit({ article: this.article, quantityChange: 1});
